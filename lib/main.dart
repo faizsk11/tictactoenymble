@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tictactoenymble/SizeConfig.dart';
 import 'package:tictactoenymble/routes/AppPages.dart';
 import 'package:tictactoenymble/routes/AppRoutes.dart';
@@ -9,7 +8,6 @@ import 'dart:math';
 import 'package:tictactoenymble/widgets/background.dart';
 
 void main() {
-  GoogleFonts.config.allowRuntimeFetching = false;
   runApp(const MyApp());
 }
 
@@ -25,6 +23,7 @@ class MyApp extends StatelessWidget {
           initialRoute: AppRoutes.HOME,
           getPages: AppPages.list,
           debugShowCheckedModeBanner: false,
+          theme:ThemeData(fontFamily: 'RopaSans'),
           themeMode: ThemeMode.system,
         );
       },

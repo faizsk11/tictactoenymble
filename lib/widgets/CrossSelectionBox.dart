@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tictactoenymble/SizeConfig.dart';
 import 'package:tictactoenymble/constants/constants.dart';
 import 'package:tictactoenymble/controller/HomePageController.dart';
@@ -32,12 +31,15 @@ class CrossSelectionBox extends GetWidget<HomePageController> {
                     color: constant().redColor,
                   ),
                 ),
-                Text('Tap to Select',
-                    style: GoogleFonts.ropaSans(
-                      color: constant().redColor,
-                      fontSize: SizeConfig.screenHeight * 0.03,
-                      fontWeight: FontWeight.bold,
-                    )),
+                Text(
+                  'Tap to Select',
+                  style: TextStyle(
+                    fontFamily: 'SanRopa',
+                    color: constant().redColor,
+                    fontSize: SizeConfig.screenHeight * 0.025,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
           ),

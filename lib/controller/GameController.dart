@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tictactoenymble/SizeConfig.dart';
 import 'package:tictactoenymble/constants/constants.dart';
 import 'package:tictactoenymble/controller/HomePageController.dart';
@@ -26,8 +25,8 @@ class GameController extends GetxController {
     gameResult.value = GameUtil.NO_WINNER_YET;
     currentPlayer.value = GameUtil.Player1;
     round.value = 0;
-    update();
 
+    update();
   }
 
   Future<void> move(int idx) async {
@@ -74,11 +73,13 @@ class GameController extends GetxController {
               : Colors.white,
           title: constant()
               .winString[Random.secure().nextInt(constant().winString.length)],
-          titleStyle: GoogleFonts.ropaSans(
+          titleStyle: TextStyle(
+            fontFamily: 'SanRopa',
             color: Get.find<HomePageController>().isDarkMode.value
                 ? Colors.white
                 : Colors.black,
-            fontSize:SizeConfig.screenHeight*0.025,
+            fontSize: SizeConfig.screenWidth * 0.05,
+            fontWeight: FontWeight.bold,
           ),
           content:
               constant().winEmoji[Random().nextInt(constant().winEmoji.length)],
@@ -106,11 +107,13 @@ class GameController extends GetxController {
               : Colors.white,
           title: constant().loseString[
               Random.secure().nextInt(constant().loseString.length)],
-          titleStyle: GoogleFonts.ropaSans(
+          titleStyle: TextStyle(
+            fontFamily: 'SanRopa',
             color: Get.find<HomePageController>().isDarkMode.value
                 ? Colors.white
                 : Colors.black,
-            fontSize:SizeConfig.screenHeight*0.025,
+            fontWeight: FontWeight.bold,
+            fontSize: SizeConfig.screenWidth * 0.05,
           ),
           content: constant()
               .loseEmoji[Random().nextInt(constant().loseEmoji.length)],
@@ -138,11 +141,13 @@ class GameController extends GetxController {
               : Colors.white,
           title: constant().drawString[
               Random.secure().nextInt(constant().drawString.length)],
-          titleStyle: GoogleFonts.ropaSans(
+          titleStyle: TextStyle(
+            fontFamily: 'SanRopa',
             color: Get.find<HomePageController>().isDarkMode.value
                 ? Colors.white
                 : Colors.black,
-            fontSize:SizeConfig.screenHeight*0.025,
+            fontSize: SizeConfig.screenWidth * 0.05,
+            fontWeight: FontWeight.bold,
           ),
           content: constant()
               .drawEmoji[Random().nextInt(constant().drawEmoji.length)],
@@ -189,7 +194,12 @@ class GameUtil {
   ];
 
   static int togglePlayer(int currentPlayer) {
-    return -1 * currentPlayer;
+    if (currentPlayer == Player1) {
+      return Player2;
+    } else if (currentPlayer == Player2) {
+      return Player1;
+    }
+    return currentPlayer;
   }
 
   static bool isValidMove(List<int> board, int idx) => board[idx] == EMPTY;
@@ -221,15 +231,13 @@ class GameAI {
   static const LOSE_SCORE = -100;
   static const DRAW_SCORE = 0;
 
-  Move bestMove = Move(score: -10000, move: -1);
-
   int play(List<int> board, int currentPlayer) {
     return getAIMove(board, currentPlayer).move;
   }
 
   Move getAIMove(List<int> board, int currentPlayer) {
-    
-      List<int> _newBoard;
+    Move bestMove = Move(score: -10000, move: -1);
+    List<int> _newBoard;
 
     for (int currentMove = 0; currentMove < board.length; currentMove++) {
       if (!GameUtil.isValidMove(board, currentMove)) continue;
@@ -239,29 +247,25 @@ class GameAI {
         _newBoard,
         GameUtil.togglePlayer(currentPlayer),
       );
-      if (Get.find<LevelPageController>().level.value == 1) {
-        if (Get.find<GameController>().round.value == 1) {
-          if (_newScore > bestMove.score) {
-            bestMove.score = _newScore - 1000;
-            bestMove.move = currentMove;
-          }
+      if (Get.find<LevelPageController>().level.value == 1 &&
+          Get.find<GameController>().round.value == 1) {
+        if (_newScore > bestMove.score) {
+          bestMove.score = _newScore - 1000;
+          bestMove.move = currentMove;
         }
-      }
-      if (Get.find<LevelPageController>().level.value == 2) {
-        if (Get.find<GameController>().round.value == 2) {
-          if (_newScore > bestMove.score) {
-            bestMove.score = _newScore - 1000;
-            bestMove.move = currentMove;
-          }
+      } else if (Get.find<LevelPageController>().level.value == 2 &&
+          Get.find<GameController>().round.value == 2) {
+        if (_newScore > bestMove.score) {
+          bestMove.score = _newScore - 1000;
+          bestMove.move = currentMove;
         }
-      }  
-      else
+      } else {
         if (_newScore > bestMove.score) {
           bestMove.score = _newScore;
           bestMove.move = currentMove;
         }
       }
-  
+    }
 
     return bestMove;
   }

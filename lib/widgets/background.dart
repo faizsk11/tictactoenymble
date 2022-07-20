@@ -8,141 +8,113 @@ import 'package:tictactoenymble/constants/constants.dart';
 import 'package:tictactoenymble/controller/HomePageController.dart';
 
 class background extends GetWidget<HomePageController> {
-  var DarkBackGroundColour = LinearGradient(
-    begin: Alignment(0.0, -1.0),
-    end: Alignment(0.0, 1.0),
-    colors: [
-      const Color(0xff232323),
-      const Color(0xff000000),
-      const Color(0xff232323)
-    ],
-    stops: [0.0, 0.489, 1.0],
-  );
-  var LightBackGroundColour = LinearGradient(
-    begin: Alignment(0.0, -1.0),
-    end: Alignment(0.0, 1.0),
-    colors: [
-      const Color(0xffffffff),
-      const Color(0xffE8E8E8),
-      const Color(0xffffffff),
-    ],
-    stops: [0.0, 0.489, 1.0],
-  );
+ 
   @override
   Widget build(BuildContext context) {
     var height = SizeConfig.screenHeight;
     var width = SizeConfig.screenWidth;
-    final circles = Obx((() => Container(
-          height: SizeConfig.screenWidth * 0.2,
-          width: SizeConfig.screenWidth * 0.2,
-          decoration: BoxDecoration(
-            gradient: controller.isDarkMode.value
-                ? constant().DarkElementGradient
-                : constant().LightelementGradient,
-            shape: BoxShape.circle,
-          ),
-        )));
+
 
     return Obx((() => Container(
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: controller.isDarkMode.value
-              ? DarkBackGroundColour
-              : LightBackGroundColour,
+              ? constant().DarkElementGradient
+              : constant().LightelementGradient,
         ),
         child: Stack(
           children: <Widget>[
             Positioned(
                 top: Random().nextInt(height.toInt()).toDouble(),
                 left: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 top: Random().nextInt(height.toInt()).toDouble(),
                 right: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 bottom: Random().nextInt(height.toInt()).toDouble(),
                 left: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 bottom: Random().nextInt(height.toInt()).toDouble(),
                 right: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 top: Random().nextInt(height.toInt()).toDouble(),
                 left: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 top: Random().nextInt(height.toInt()).toDouble(),
                 right: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 bottom: Random().nextInt(height.toInt()).toDouble(),
                 left: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 bottom: Random().nextInt(height.toInt()).toDouble(),
                 right: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 top: Random().nextInt(height.toInt()).toDouble(),
                 left: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             Positioned(
                 top: Random().nextInt(height.toInt()).toDouble(),
                 right: Random().nextInt(width.toInt()).toDouble(),
-                child: circles),
+                child: constant().circles),
             if (kIsWeb)
               Positioned(
                   top: Random().nextInt(height.toInt()).toDouble(),
                   left: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   top: Random().nextInt(height.toInt()).toDouble(),
                   right: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   bottom: Random().nextInt(height.toInt()).toDouble(),
                   left: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   bottom: Random().nextInt(height.toInt()).toDouble(),
                   right: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   top: Random().nextInt(height.toInt()).toDouble(),
                   left: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   top: Random().nextInt(height.toInt()).toDouble(),
                   right: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   bottom: Random().nextInt(height.toInt()).toDouble(),
                   left: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   bottom: Random().nextInt(height.toInt()).toDouble(),
                   right: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   top: Random().nextInt(height.toInt()).toDouble(),
                   left: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
             if (kIsWeb)
               Positioned(
                   top: Random().nextInt(height.toInt()).toDouble(),
                   right: Random().nextInt(width.toInt()).toDouble(),
-                  child: circles),
+                  child: constant().circles),
           ],
         ))));
   }

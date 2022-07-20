@@ -9,13 +9,14 @@ void main() {
     test("Check for AI Best move", () {
     // Arrange
     GameAI gameAI = GameAI();
-    gameAI.bestMove.score=-10000;
-    gameAI.bestMove.score=-1;
-    Get.put(LevelPageController());
+     Get.put(LevelPageController());
+    gameAI.getAIMove([0,0,0,0,0,0,0,0,0], -1).score=-10000;
+    gameAI.getAIMove([0,0,0,0,0,0,0,0,0], -1).move=-1;
+   
     // Act
-    int result = gameAI.play([0,0,0,0,0,0,0,0,0], -1);
+    int result = gameAI.play([1,0,0,0,0,0,0,0,0], -1);
     // Assert
-    expect(result, 6);
+    expect(result, 4);
   });
 
 

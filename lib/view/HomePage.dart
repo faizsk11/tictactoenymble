@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tictactoenymble/SizeConfig.dart';
 import 'package:tictactoenymble/constants/constants.dart';
 import 'package:tictactoenymble/controller/HomePageController.dart';
@@ -14,30 +13,7 @@ class HomePage extends GetView<HomePageController> {
     return Scaffold(
       body: Obx((() => Stack(children: [
             background(),
-            Padding(
-              padding: EdgeInsets.fromLTRB(SizeConfig.screenWidth * 0.05,
-                  SizeConfig.screenHeight * 0.05, 0, 0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      controller.toggleDarkMode();
-                    },
-                    child: Icon(
-                      controller.isDarkMode.value
-                          ? Icons.light_mode
-                          : Icons.dark_mode,
-                      color: controller.isDarkMode.value
-                          ? Colors.white
-                          : Colors.black,
-                      size: SizeConfig.screenHeight * 0.05,
-                    ),
-                  )
-                ],
-              ),
-            ),
+            constant().ThemeIcon,
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,14 +34,17 @@ class HomePage extends GetView<HomePageController> {
                         ? constant().LightelementGradient.createShader(rect)
                         : constant().DarkElementGradient.createShader(rect);
                   },
-                  child: Text('More Options Coming Soon!',
-                      style: GoogleFonts.ropaSans(
-                        color: Get.find<HomePageController>().isDarkMode.value
-                            ? Colors.white
-                            : Colors.black,
-                        fontSize: SizeConfig.screenHeight * 0.03,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  child: Text(
+                    'More Options Coming Soon!',
+                    style: TextStyle(
+                      fontFamily: 'SanRopa',
+                      color: Get.find<HomePageController>().isDarkMode.value
+                          ? Colors.white
+                          : Colors.black,
+                      fontSize: SizeConfig.screenWidth * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 )
               ],
             ),

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tictactoenymble/SizeConfig.dart';
 import 'package:tictactoenymble/constants/constants.dart';
 import 'package:tictactoenymble/controller/HomePageController.dart';
@@ -32,9 +31,10 @@ class TickSelectionBox extends GetWidget<HomePageController> {
                 ),
                 Text(
                   'Tap to Select',
-                  style: GoogleFonts.ropaSans(
+                  style: TextStyle(
+                    fontFamily: 'SanRopa',
                     color: constant().greenColor,
-                    fontSize: SizeConfig.screenHeight * 0.03,
+                    fontSize: SizeConfig.screenHeight * 0.025,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

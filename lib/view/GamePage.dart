@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tictactoenymble/SizeConfig.dart';
 import 'package:tictactoenymble/constants/constants.dart';
 import 'package:tictactoenymble/controller/GameController.dart';
@@ -19,41 +18,15 @@ class GamePage extends GetView<GameController> {
             body: Stack(
               children: [
                 background(),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      SizeConfig.screenWidth * 0.05,
-                      SizeConfig.screenHeight * 0.05,
-                      0,
-                      0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.find<HomePageController>().toggleDarkMode();
-                        },
-                        child: Icon(
-                          Get.find<HomePageController>().isDarkMode.value
-                              ? Icons.light_mode
-                              : Icons.dark_mode,
-                          color: Get.find<HomePageController>().isDarkMode.value
-                              ? Colors.white
-                              : Colors.black,
-                          size: SizeConfig.screenHeight * 0.05,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                constant().ThemeIcon,
                 Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
                         child: SizedBox(
-                            height: SizeConfig.screenHeight * 0.5,
-                            width:SizeConfig.screenHeight * 0.5,
+                            height: SizeConfig.screenWidth * 0.7,
+                            width: SizeConfig.screenWidth * 0.7,
                             child: BoardWidget()),
                       ),
                       GetBuilder<GameController>(
@@ -66,25 +39,32 @@ class GamePage extends GetView<GameController> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                    'Player: ' +
-                                        controller.player1Win.toString(),
-                                    style: GoogleFonts.ropaSans(
-            color: Get.find<HomePageController>().isDarkMode.value
-                ? Colors.white
-                : Colors.black,
-            fontSize:SizeConfig.screenHeight*0.03,
-            fontWeight: FontWeight.bold,
-          )),
+                                  'Player: ' + controller.player1Win.toString(),
+                                  style: TextStyle(
+                                    fontFamily: 'SanRopa',
+                                    color: Get.find<HomePageController>()
+                                            .isDarkMode
+                                            .value
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontSize: SizeConfig.screenWidth * 0.05,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                                 Text(
-                                    'Computer: ' +
-                                        controller.player2Win.value.toString(),
-                                    style: GoogleFonts.ropaSans(
-            color: Get.find<HomePageController>().isDarkMode.value
-                ? Colors.white
-                : Colors.black,
-            fontSize:SizeConfig.screenHeight*0.03,
-            fontWeight: FontWeight.bold,
-          )),
+                                  'Computer: ' +
+                                      controller.player2Win.value.toString(),
+                                  style: TextStyle(
+                                    fontFamily: 'SanRopa',
+                                    color: Get.find<HomePageController>()
+                                            .isDarkMode
+                                            .value
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontSize: SizeConfig.screenWidth * 0.05,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ],
                             ),
                           );

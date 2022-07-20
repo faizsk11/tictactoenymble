@@ -10,7 +10,7 @@ class SizeConfig {
     if (constraints.maxWidth < constraints.maxHeight) {
       screenWidth = constraints.maxWidth;
       screenHeight = constraints.maxHeight;
-    } else {
+    } else if(kIsWeb) {
       screenWidth = constraints.maxHeight;
       screenHeight = constraints.maxWidth;
     }

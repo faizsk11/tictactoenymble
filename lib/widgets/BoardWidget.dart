@@ -101,9 +101,6 @@ class _Field extends StatelessWidget {
   }
 
   Widget? _getPlayerWidget(int playerId) {
-      return GetBuilder<HomePageController>(
-        init: HomePageController(),
-        builder: (controller) {
     switch (playerId) {
       case GameUtil.Player1:
         return Get.find<HomePageController>().Player1Sign;
@@ -112,7 +109,7 @@ class _Field extends StatelessWidget {
       default:
         return Container();
     }
-        });
+      
   }
 
   Border _getBorder(int index) {

@@ -144,7 +144,7 @@ void main() {
     // Act
     bool result = GameUtil.isValidMove([0, 0, 0, 0, 0, 0, 0, 0, 0], 1);
     // Assert
-    expect(result, false);
+    expect(result, true);
   });
 
   test("Check If Winner Found", () {

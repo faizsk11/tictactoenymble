@@ -15,7 +15,7 @@ class background extends GetWidget<HomePageController> {
     var width = SizeConfig.screenWidth;
 
 
-    return Obx((() => Container(
+    return Container(
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -116,6 +116,6 @@ class background extends GetWidget<HomePageController> {
                   right: Random().nextInt(width.toInt()).toDouble(),
                   child: constant().circles),
           ],
-        ))));
+        ));
   }
 }

@@ -11,7 +11,8 @@ class HomePage extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx((() => Stack(children: [
+      body: Obx((() => Stack(
+        children: [
             background(),
             constant().ThemeIcon,
             Column(
